@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Inc, Dec } from "./states/reducers";
+
 
 function App() {
+  const currentSelecter = useSelector((state) => state.number);
+  const dispatch = useDispatch ();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>React redux</h1>
+      <div style={{width: '100%',display:'flex', alignItems:'center' , flexDirection:'column'}}>
+        <h1>{currentSelecter}</h1>
+        <div>
+        <button onClick={() => dispatch(Inc(10))}>Inc</button>
+        <button onClick={() => dispatch(Dec())}>Dec</button>
+        </div>
+      </div>
+    </>
   );
 }
 
